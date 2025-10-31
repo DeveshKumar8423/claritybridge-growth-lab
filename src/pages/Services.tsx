@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Users, BookOpen, Brain, Lightbulb, Network } from "lucide-react";
+import { Users, BookOpen, Brain, Lightbulb, Network, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
@@ -91,15 +91,15 @@ const Services = () => {
     },
     {
       id: "collaboration",
-      icon: Network,
+      icon: MessageCircle,
       title: "Collaborative Resonance Hub",
       description: "Where diverse minds unite to create collective intelligence and breakthrough ideas",
       features: [
         "Interdisciplinary project teams",
         "Idea incubation and brainstorming sessions",
-        "Collaborative research opportunities",
+        "Community collaboration opportunities",
         "Knowledge sharing forums",
-        "Discord and GitHub collaboration tools",
+        "Discord community discussions",
         "Monthly innovation challenges"
       ],
       benefits: [
@@ -239,7 +239,7 @@ const Services = () => {
             <Button asChild variant="secondary" size="lg">
               <Link to="/join">Join Community</Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10">
+            <Button asChild size="lg" className="bg-white/20 backdrop-blur-sm border border-white/30 text-white hover:bg-white/30">
               <Link to="/contact">Ask Questions</Link>
             </Button>
           </div>

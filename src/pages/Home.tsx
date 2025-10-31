@@ -219,7 +219,7 @@ const Home = () => {
               <Button asChild variant="secondary" size="lg" className="text-base px-8">
                 <Link to="/join">Join Community</Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="text-base px-8 border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10">
+              <Button asChild size="lg" className="text-base px-8 bg-white/20 backdrop-blur-sm border border-white/30 text-white hover:bg-white/30">
                 <Link to="/contact">Get in Touch</Link>
               </Button>
             </div>

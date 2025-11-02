@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 import SectionLayout from "@/components/SectionLayout";
 import StatsSection from "@/components/StatsSection";
 import ExpertiseCard from "@/components/ExpertiseCard";
-import heroImage from "/lablogo.png";
+import heroImage from "@/assets/hero-bg.jpg";
 
 const Home = () => {
   const expertiseAreas = [

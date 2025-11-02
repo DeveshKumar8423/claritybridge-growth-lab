@@ -17,15 +17,7 @@ const Articles = () => {
     url: "https://drive.google.com/file/d/14QCxUEL1fmld6ysJFUKSvV0NYYqoWDR6/view?usp=sharing",
   } as const;
 
-  const globExact = import.meta.glob("@/assets/selfexploration.{png,jpg,jpeg,svg}", {
-    eager: true,
-    import: "default",
-  }) as Record<string, string>;
-  const globAlt = import.meta.glob("@/assets/self-exploration*.{png,jpg,jpeg,svg}", {
-    eager: true,
-    import: "default",
-  }) as Record<string, string>;
-  const selfExplorationImage = (Object.values(globExact)[0] || Object.values(globAlt)[0]) as string | undefined;
+  // Removed legacy self-exploration image reference
 
   const articles = [
     {

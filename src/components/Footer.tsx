@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Sparkles, Mail, Github, Linkedin, Twitter } from "lucide-react";
+import { Sparkles, Mail, Github, Linkedin, Twitter, Discord } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -81,6 +81,15 @@ const Footer = () => {
                 aria-label="Email"
               >
                 <Mail className="w-5 h-5" />
+              </a>
+              <a
+                href="https://discord.gg/2frExN4j"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-lg bg-primary/10 hover:bg-primary/20 text-primary transition-all duration-300 hover:scale-110"
+                aria-label="Discord"
+              >
+                <Discord className="w-5 h-5" />
               </a>
               <a
                 href="https://github.com"

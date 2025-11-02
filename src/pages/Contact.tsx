@@ -51,8 +51,8 @@ const Contact = () => {
     {
       icon: MessageCircle,
       title: "Discord Community",
-      content: "Open Discord",
-      link: "https://discord.gg/"
+      content: "Join on Discord",
+      link: "https://discord.gg/2frExN4j"
     },
     {
       icon: Linkedin,

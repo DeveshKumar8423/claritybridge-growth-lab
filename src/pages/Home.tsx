@@ -105,23 +105,16 @@ const Home = () => {
               className="flex flex-col sm:flex-row gap-4 justify-center items-center"
             >
               <Button asChild variant="hero" size="lg" className="text-base px-8">
-                <Link to="/join">
+                <a href="http://linkedin.com/company/claritybridge8423/" target="_blank" rel="noopener noreferrer">
                   Join Our Community <ArrowRight className="ml-2 w-5 h-5" />
-                </Link>
+                </a>
               </Button>
               <Button asChild variant="glass" size="lg" className="text-base px-8">
-                <Link to="/services">Explore Services</Link>
+                <Link to="/services">Explore Work</Link>
               </Button>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 0.4 }}
-              className="pt-12"
-            >
-              <p className="text-sm text-muted-foreground mb-4">Founded by Devesh Kumar Gola</p>
-            </motion.div>
+            
           </div>
         </div>
 
@@ -163,7 +156,7 @@ const Home = () => {
               ClarityBridge was born from a passion for understanding the human mind and fostering collective growth. As a psychologist, AI researcher, and creative writer, I've created a space where science meets creativity, where research meets practice, and where individuals come together to explore the depths of human potential.
             </p>
             <Button asChild variant="outline" size="lg" className="mt-8">
-              <Link to="/about">Learn My Story <ArrowRight className="ml-2 w-5 h-5" /></Link>
+              <Link to="/about#my-story">Learn My Story <ArrowRight className="ml-2 w-5 h-5" /></Link>
             </Button>
           </motion.div>
         </div>
@@ -217,7 +210,7 @@ const Home = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
               <Button asChild variant="secondary" size="lg" className="text-base px-8">
-                <Link to="/join">Join Community</Link>
+                <a href="https://discord.gg/2frExN4j" target="_blank" rel="noopener noreferrer">Join Community</a>
               </Button>
               <Button asChild size="lg" className="text-base px-8 bg-white/20 backdrop-blur-sm border border-white/30 text-white hover:bg-white/30">
                 <Link to="/contact">Get in Touch</Link>

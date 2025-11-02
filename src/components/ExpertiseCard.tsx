@@ -38,11 +38,7 @@ const ExpertiseCard = ({ icon: Icon, title, description, features, link, delay =
             ))}
           </ul>
         </CardContent>
-        <CardFooter>
-          <Button variant="glass" className="w-full" asChild>
-            <a href={link}>Learn More</a>
-          </Button>
-        </CardFooter>
+        
       </Card>
     </motion.div>
   );

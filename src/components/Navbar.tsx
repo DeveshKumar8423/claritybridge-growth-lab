@@ -19,7 +19,7 @@ const Navbar = () => {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
-    { name: "Services", path: "/services" },
+    { name: "Work", path: "/services" },
     { name: "Articles", path: "/articles" },
     { name: "Contact", path: "/contact" },
   ];
@@ -62,7 +62,7 @@ const Navbar = () => {
           {/* CTA Button - Desktop */}
           <div className="hidden md:block">
             <Button asChild variant="hero" size="sm">
-              <Link to="/join">Join Community</Link>
+              <a href="https://discord.gg/2frExN4j" target="_blank" rel="noopener noreferrer">Join Community</a>
             </Button>
           </div>
 
@@ -95,9 +95,9 @@ const Navbar = () => {
               </Link>
             ))}
             <Button asChild variant="hero" className="w-full mt-4">
-              <Link to="/join" onClick={() => setIsOpen(false)}>
+              <a href="https://discord.gg/2frExN4j" target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)}>
                 Join Community
-              </Link>
+              </a>
             </Button>
           </div>
         </div>

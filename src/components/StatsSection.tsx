@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 import { Users, FileText, Heart, Sparkles } from "lucide-react";
 
 const stats = [
-  { icon: Users, label: "Community Members", value: "500+" },
-  { icon: FileText, label: "Research Projects", value: "30+" },
-  { icon: Heart, label: "Lives Impacted", value: "1000+" },
-  { icon: Sparkles, label: "Creative Works", value: "200+" },
+  { icon: Users, label: "Community Members", value: "4+" },
+  { icon: FileText, label: "Research Projects", value: "4+" },
+  { icon: Heart, label: "Lives Impacted", value: "50+" },
+  { icon: Sparkles, label: "Awards", value: "2+" },
 ];
 
 const StatsSection = () => {

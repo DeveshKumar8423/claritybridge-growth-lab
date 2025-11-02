@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, MessageCircle, MapPin, Send } from "lucide-react";
+import { Mail, MessageCircle, MapPin, Send, Linkedin } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SectionLayout from "@/components/SectionLayout";
@@ -45,21 +45,21 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email",
-      content: "contact@claritybridge.com",
-      link: "mailto:contact@claritybridge.com"
+      content: "Email Us",
+      link: "mailto:deveshkumar8423gola@gmail.com"
     },
     {
       icon: MessageCircle,
       title: "Discord Community",
-      content: "Join our server",
-      link: "https://discord.gg/claritybridge"
+      content: "Open Discord",
+      link: "https://discord.gg/"
     },
     {
-      icon: MapPin,
-      title: "Location",
-      content: "Remote & Global",
-      link: null
-    }
+      icon: Linkedin,
+      title: "LinkedIn",
+      content: "Visit LinkedIn",
+      link: "http://linkedin.com/company/claritybridge8423/"
+    },
   ];
 
   return (
@@ -94,17 +94,16 @@ const Contact = () => {
           {contactInfo.map((info, index) => {
             const Icon = info.icon;
             const content = info.link ? (
-              <a
-                href={info.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary hover:underline"
-              >
-                {info.content}
-              </a>
-            ) : (
-              <span className="text-muted-foreground">{info.content}</span>
-            );
+              <Button asChild variant="glass" className="mt-2">
+                <a
+                  href={info.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {info.content}
+                </a>
+              </Button>
+            ) : null;
 
             return (
               <motion.div

@@ -5,6 +5,12 @@ import Footer from "@/components/Footer";
 import SectionLayout from "@/components/SectionLayout";
 
 const About = () => {
+  const collaboratorImages = Object.values(
+    import.meta.glob("@/assets/collaborators/*.{png,jpg,jpeg,svg}", {
+      eager: true,
+      import: "default",
+    }) as Record<string, string>
+  ) as string[];
   const values = [
     {
       icon: Heart,
@@ -30,29 +36,49 @@ const About = () => {
 
   const timeline = [
     {
-      year: "2020",
-      title: "The Beginning",
-      description: "Started my journey in clinical psychology, fascinated by the intersection of mind and technology.",
+      year: "2023 Aug – Dec",
+      title: "Journey of Self-Exploration",
+      description: "Deep personal exploration and journaling to build inner clarity.",
     },
     {
-      year: "2021",
-      title: "Research Focus",
-      description: "Deepened expertise in personality psychology and began exploring AI applications in mental health.",
+      year: "2024 Jan",
+      title: "Course on Counselling",
+      description: "Formal training to strengthen counselling foundations.",
     },
     {
-      year: "2022",
-      title: "Community Building",
-      description: "Launched first self-exploration workshops, discovering the power of collective growth.",
+      year: "2024 Jul – Aug",
+      title: "Personality & Applied Psychology",
+      description: "Courses in Personality Development and Diploma in Modern Applied Psychology.",
     },
     {
-      year: "2023",
-      title: "ClarityBridge Founded",
-      description: "Established ClarityBridge Psychology Lab to integrate psychology, research, and creative expression.",
+      year: "2024 Sep",
+      title: "Joined Life Fundies",
+      description: "Began community-focused learning and collaboration at Life Fundies.",
     },
     {
-      year: "2024",
-      title: "Growing Together",
-      description: "Expanding our community and research initiatives, touching lives across the globe.",
+      year: "2025 Jun",
+      title: "Research & Protocol Design",
+      description: "Collaborative resonance with Dartmouth College; research internship at IIT Kharagpur; developed the Self-Exploration Protocol.",
+    },
+    {
+      year: "2025 Jul",
+      title: "Advanced Personality Studies",
+      description: "Completed courses on personality transformation and dark psychology.",
+    },
+    {
+      year: "2025 Aug",
+      title: "University of Illinois (Urbana-Champaign)",
+      description: "Joined as a psycho-social intern to further applied learning.",
+    },
+    {
+      year: "2025 Sep",
+      title: "Atmashakti Community Intern",
+      description: "Designed mental health protocol as a community intern.",
+    },
+    {
+      year: "2025 Oct",
+      title: "ClarityBridge Foundations",
+      description: "Laid the foundations and started ClarityBridge as a movement.",
     },
   ];
 
@@ -84,7 +110,7 @@ const About = () => {
 
       {/* My Story */}
       <SectionLayout background="gradient">
-        <div className="max-w-4xl mx-auto">
+        <div id="my-story" className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -95,16 +121,17 @@ const About = () => {
             <h2 className="text-3xl sm:text-4xl font-bold mb-8">My Story</h2>
             <div className="prose prose-lg max-w-none space-y-4 text-muted-foreground">
               <p className="leading-relaxed">
-                I'm <strong className="text-foreground">Devesh Kumar Gola</strong>, a psychologist, researcher, and creative soul passionate about understanding what makes us human. My journey began with a simple question: "Why do we think, feel, and act the way we do?"
+                I'm <strong className="text-foreground">Devesh Kumar Gola</strong>, a psychologist, researcher, and seeker driven by one question —
+                <em> “What is the meaning and purpose of my life?”</em>
               </p>
               <p className="leading-relaxed">
-                This curiosity led me through years of studying clinical psychology, personality development, and counseling. But I soon realized that traditional approaches, while valuable, often missed something crucial - the power of creativity, collaboration, and community in personal growth.
+                That question led me from self-reflection to system design — from studying psychology to creating frameworks that make inner clarity accessible to all. Through my work at IIT Kharagpur, UIUC, and Dartmouth, and as the Co-Founder of Life Fundies, I’ve explored how belief systems, emotions, and hope shape human potential.
               </p>
               <p className="leading-relaxed">
-                ClarityBridge was born from this realization. It's not just a lab or a service - it's a movement. A space where psychology meets poetry, where research meets reflection, and where individuals come together to explore the depths of human potential.
+                To turn insight into impact, I designed the Self-Exploration Protocol, Atmashakti Mental Health Protocol, and Life Fundies Volunteer Engagement Protocol — structured pathways for self-growth, emotional resilience, and community well-being.
               </p>
               <p className="leading-relaxed">
-                Through my work in AI research, I've learned that our future depends on understanding ourselves better. Through creative writing, I've discovered that stories heal. And through community building, I've witnessed the magic that happens when people support each other's growth.
+                ClarityBridge emerged from these experiences — a movement where psychology meets creativity, research meets reflection, and people rediscover meaning through connection and self-understanding.
               </p>
             </div>
           </motion.div>
@@ -182,6 +209,36 @@ const About = () => {
               </motion.div>
             );
           })}
+        </div>
+      </SectionLayout>
+
+      {/* Our Collaborators */}
+      <SectionLayout>
+        <div className="max-w-6xl mx-auto">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl sm:text-4xl font-bold text-center mb-8"
+          >
+            Our Collaborators
+          </motion.h2>
+
+          <div className="overflow-hidden">
+            <div className="grid grid-cols-5 gap-6 items-center">
+              {(collaboratorImages.slice(0, 5)).map((src, idx) => (
+                <div key={idx} className="flex justify-center">
+                  <img
+                    src={src as unknown as string}
+                    alt={`Collaborator ${idx + 1}`}
+                    className="h-20 sm:h-24 md:h-28 object-contain opacity-80 hover:opacity-100 transition-opacity"
+                    draggable={false}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </SectionLayout>
 

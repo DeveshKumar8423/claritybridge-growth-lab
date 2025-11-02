@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SectionLayout from "@/components/SectionLayout";
-import ExpertiseCard from "@/components/ExpertiseCard";
 
 const Services = () => {
   const services = [
@@ -111,6 +110,53 @@ const Services = () => {
     }
   ];
 
+  const workItems = [
+    {
+      icon: Users,
+      title: "Self-Exploration Community",
+      description: "A safe space for deep personal discovery and growth",
+      features: [
+        "Guided self-reflection exercises",
+        "Peer support groups",
+        "Personal growth tracking",
+        "Expert-led workshops",
+      ],
+    },
+    {
+      icon: BookOpen,
+      title: "Research Protocol Creation",
+      description: "Design rigorous psychological research methodologies",
+      features: [
+        "Custom research design",
+        "Statistical analysis support",
+        "Ethics consultation",
+        "Publication guidance",
+      ],
+    },
+    {
+      icon: Brain,
+      title: "Personality Development",
+      description: "Science-based approaches to personal transformation",
+      features: [
+        "Evidence-based assessments",
+        "Customized development plans",
+        "Behavioral coaching",
+        "Progress monitoring",
+      ],
+    },
+    {
+      icon: Lightbulb,
+      title: "Creative Writing Lab",
+      description: "Express yourself through the art of words",
+      features: [
+        "Writing workshops",
+        "Creative feedback sessions",
+        "Publishing opportunities",
+        "Community showcase",
+      ],
+    },
+  ] as const;
+
   return (
     <div className="min-h-screen">
       <Navbar />
@@ -127,7 +173,7 @@ const Services = () => {
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold">
               Our{" "}
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                Services
+                Work
               </span>
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed">
@@ -137,88 +183,40 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Services Overview Cards */}
+      {/* Our Work - Five Boxes (placeholders) */}
       <SectionLayout>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-16">
-          {services.slice(0, 5).map((service, index) => (
-            <ExpertiseCard
-              key={service.id}
-              icon={service.icon}
-              title={service.title}
-              description={service.description}
-              features={service.features.slice(0, 3)}
-              link={`#${service.id}`}
-              delay={index * 0.1}
-            />
-          ))}
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+            {workItems.map((item) => {
+              const Icon = item.icon;
+              return (
+                <div
+                  key={item.title}
+                  className="p-6 rounded-2xl bg-card/60 backdrop-blur-sm border border-border/50"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="inline-flex p-3 rounded-lg bg-gradient-to-br from-primary to-accent">
+                      <Icon className="w-6 h-6 text-primary-foreground" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold">{item.title}</h3>
+                      <p className="text-sm text-muted-foreground">{item.description}</p>
+                    </div>
+                  </div>
+                  <ul className="mt-4 space-y-2">
+                    {item.features.map((feature) => (
+                      <li key={feature} className="flex items-start gap-2 text-sm text-muted-foreground">
+                        <span className="text-primary mt-0.5">•</span>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </SectionLayout>
-
-      {/* Detailed Service Sections */}
-      {services.map((service, index) => {
-        const Icon = service.icon;
-        const isEven = index % 2 === 0;
-        
-        return (
-          <SectionLayout
-            key={service.id}
-            background={isEven ? "gradient" : "default"}
-          >
-            <div id={service.id} className="scroll-mt-20">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="max-w-6xl mx-auto"
-              >
-                <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-                  {/* Content */}
-                  <div className={`space-y-6 ${isEven ? "" : "lg:order-2"}`}>
-                    <div className="inline-flex p-3 rounded-lg bg-gradient-to-br from-primary to-accent">
-                      <Icon className="w-8 h-8 text-primary-foreground" />
-                    </div>
-                    <h2 className="text-3xl sm:text-4xl font-bold">{service.title}</h2>
-                    <p className="text-lg text-muted-foreground">{service.description}</p>
-
-                    <div className="space-y-4">
-                      <h3 className="text-xl font-semibold">What You'll Get</h3>
-                      <ul className="space-y-2">
-                        {service.features.map((feature, idx) => (
-                          <li key={idx} className="flex items-start gap-3">
-                            <span className="text-primary mt-1">✓</span>
-                            <span className="text-muted-foreground">{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-
-                  {/* Benefits Card */}
-                  <div className={`${isEven ? "" : "lg:order-1"}`}>
-                    <div className="p-8 rounded-2xl bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-sm border border-border/50">
-                      <h3 className="text-2xl font-bold mb-6">Key Benefits</h3>
-                      <ul className="space-y-4">
-                        {service.benefits.map((benefit, idx) => (
-                          <li key={idx} className="flex items-start gap-3">
-                            <div className="w-6 h-6 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center flex-shrink-0 mt-0.5">
-                              <span className="text-primary-foreground text-xs font-bold">{idx + 1}</span>
-                            </div>
-                            <span className="text-foreground">{benefit}</span>
-                          </li>
-                        ))}
-                      </ul>
-                      <Button asChild variant="hero" className="w-full mt-8">
-                        <Link to="/join">Get Started</Link>
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </SectionLayout>
-        );
-      })}
 
       {/* CTA Section */}
       <SectionLayout background="gradient">
@@ -237,10 +235,10 @@ const Services = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
             <Button asChild variant="secondary" size="lg">
-              <Link to="/join">Join Community</Link>
+              <a href="https://discord.gg/2frExN4j" target="_blank" rel="noopener noreferrer">Join Community</a>
             </Button>
             <Button asChild size="lg" className="bg-white/20 backdrop-blur-sm border border-white/30 text-white hover:bg-white/30">
-              <Link to="/contact">Ask Questions</Link>
+              <Link to="/faqs">Ask Questions</Link>
             </Button>
           </div>
         </motion.div>

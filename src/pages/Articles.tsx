@@ -6,66 +6,64 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SectionLayout from "@/components/SectionLayout";
+import { useState, useMemo } from "react";
 
 const Articles = () => {
+  const featured = {
+    title: "10-Point Self-Exploration Protocol",
+    excerpt: `The 10-Point Self-Exploration Protocol is a roadmap for self-understanding, moving you from "autopilot" to intentional living. It covers identifying your Value System, Broader Life Planning, gaining Clarity by analyzing past Strategies and Lessons, and organizing priorities with a Mind Replica. The protocol assesses where you stand on Maslow's Hierarchy, pinpoints "Death Valleys" (setbacks), and emphasizes evolving your Character and Skill Set while adapting to external systems. This ongoing journey provides a lens for continual growth.`,
+    author: "ClarityBridge",
+    readTime: "",
+    url: "https://drive.google.com/file/d/14QCxUEL1fmld6ysJFUKSvV0NYYqoWDR6/view?usp=sharing",
+  } as const;
+
+  const globExact = import.meta.glob("@/assets/selfexploration.{png,jpg,jpeg,svg}", {
+    eager: true,
+    import: "default",
+  }) as Record<string, string>;
+  const globAlt = import.meta.glob("@/assets/self-exploration*.{png,jpg,jpeg,svg}", {
+    eager: true,
+    import: "default",
+  }) as Record<string, string>;
+  const selfExplorationImage = (Object.values(globExact)[0] || Object.values(globAlt)[0]) as string | undefined;
+
   const articles = [
     {
-      title: "The Psychology of Self-Discovery: A Journey Within",
-      excerpt: "Exploring the neuroscience and psychology behind self-awareness and how understanding ourselves can transform our lives...",
-      category: "Psychology",
-      author: "Devesh Kumar Gola",
-      date: "March 15, 2024",
-      readTime: "8 min read",
-      slug: "psychology-of-self-discovery"
-    },
-    {
-      title: "AI and Mental Health: Opportunities and Ethical Considerations",
-      excerpt: "Examining how artificial intelligence is revolutionizing mental health care while addressing important ethical concerns...",
-      category: "AI & Research",
-      author: "Devesh Kumar Gola",
-      date: "March 10, 2024",
-      readTime: "10 min read",
-      slug: "ai-mental-health"
-    },
-    {
-      title: "The Power of Creative Writing in Emotional Healing",
-      excerpt: "How putting pen to paper can help us process trauma, understand emotions, and find our authentic voice...",
+      title: "Self Exploration — Morals, Ethics and Values",
+      excerpt: "Foundations of self-exploration through morals, beliefs, values, culture, and environment.",
       category: "Creative Writing",
       author: "Devesh Kumar Gola",
-      date: "March 5, 2024",
-      readTime: "6 min read",
-      slug: "creative-writing-healing"
+      date: "Oct 1, 2025",
+      readTime: "2 min read",
+      url: "https://medium.com/@devesh8423/self-exploration-morals-ethics-and-values-c2e4e26ccd40",
     },
     {
-      title: "Building Personality: The Science Behind Behavioral Change",
-      excerpt: "Understanding the mechanisms of personality development and how we can intentionally shape who we become...",
+      title: "The Harder Truth #1",
+      excerpt: "Choose the harder right over the easier wrong—build strength, voice, and purpose.",
       category: "Personality Development",
       author: "Devesh Kumar Gola",
-      date: "February 28, 2024",
-      readTime: "12 min read",
-      slug: "personality-behavioral-change"
+      date: "Sep 29, 2025",
+      readTime: "2 min read",
+      url: "https://medium.com/@devesh8423/the-harder-truth-1-79ba0621015f",
     },
     {
-      title: "Collaborative Intelligence: When Minds Unite",
-      excerpt: "Research insights on how group dynamics and diverse perspectives enhance problem-solving and creativity...",
-      category: "Research",
+      title: "Self Exploration — Reality of Life",
+      excerpt: "On discovering the reality of life and self—towards meaning and clarity.",
+      category: "Creative Writing",
       author: "Devesh Kumar Gola",
-      date: "February 20, 2024",
-      readTime: "9 min read",
-      slug: "collaborative-intelligence"
+      date: "Sep 15, 2025",
+      readTime: "2 min read",
+      url: "https://medium.com/@devesh8423/self-exploration-reality-of-life-64945b9eef60",
     },
-    {
-      title: "Mindfulness in the Digital Age: Finding Presence",
-      excerpt: "Practical strategies for cultivating mindfulness and authentic presence in an increasingly digital world...",
-      category: "Psychology",
-      author: "Devesh Kumar Gola",
-      date: "February 15, 2024",
-      readTime: "7 min read",
-      slug: "mindfulness-digital-age"
-    }
   ];
 
   const categories = ["All", "Psychology", "AI & Research", "Creative Writing", "Personality Development", "Research"];
+
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");
+  const filteredArticles = useMemo(() => {
+    if (selectedCategory === "All") return articles;
+    return articles.filter((a) => a.category === selectedCategory);
+  }, [articles, selectedCategory]);
 
   return (
     <div className="min-h-screen">
@@ -105,8 +103,9 @@ const Articles = () => {
           {categories.map((category) => (
             <button
               key={category}
+              onClick={() => setSelectedCategory(category)}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                category === "All"
+                selectedCategory === category
                   ? "bg-gradient-to-r from-primary to-accent text-primary-foreground"
                   : "bg-card/60 border border-border/50 hover:border-primary/50 hover:bg-card/80"
               }`}
@@ -125,45 +124,40 @@ const Articles = () => {
           className="mb-16"
         >
           <Card className="overflow-hidden bg-gradient-to-br from-card/90 to-card/60 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all duration-300">
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="h-64 md:h-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-                <div className="text-6xl">🧠</div>
-              </div>
-              <div className="p-6 md:p-8 flex flex-col justify-center">
+            <div className="p-6 md:p-8">
                 <div className="inline-block px-3 py-1 rounded-full bg-primary/20 text-primary text-xs font-semibold mb-4 w-fit">
                   Featured
                 </div>
                 <h2 className="text-2xl sm:text-3xl font-bold mb-4">
-                  {articles[0].title}
+                  {featured.title}
                 </h2>
                 <p className="text-muted-foreground mb-6 leading-relaxed">
-                  {articles[0].excerpt}
+                  {featured.excerpt}
                 </p>
                 <div className="flex items-center gap-4 text-sm text-muted-foreground mb-6">
                   <div className="flex items-center gap-1">
                     <User className="w-4 h-4" />
-                    <span>{articles[0].author}</span>
+                    <span>{featured.author}</span>
                   </div>
                   <div className="flex items-center gap-1">
                     <Clock className="w-4 h-4" />
-                    <span>{articles[0].readTime}</span>
+                    <span>{featured.readTime}</span>
                   </div>
                 </div>
                 <Button variant="hero" asChild>
-                  <Link to={`/articles/${articles[0].slug}`}>
-                    Read Full Article <ArrowRight className="ml-2 w-4 h-4" />
-                  </Link>
+                  <a href={featured.url} target="_blank" rel="noopener noreferrer">
+                    Read Full Protocol <ArrowRight className="ml-2 w-4 h-4" />
+                  </a>
                 </Button>
               </div>
-            </div>
           </Card>
         </motion.div>
 
         {/* Article Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {articles.slice(1).map((article, index) => (
+          {filteredArticles.map((article, index) => (
             <motion.div
-              key={article.slug}
+              key={article.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -192,9 +186,9 @@ const Articles = () => {
                 </CardContent>
                 <CardFooter>
                   <Button variant="glass" className="w-full group-hover:border-primary/50" asChild>
-                    <Link to={`/articles/${article.slug}`}>
-                      Read More <ArrowRight className="ml-2 w-4 h-4" />
-                    </Link>
+                    <a href={article.url} target="_blank" rel="noopener noreferrer">
+                      Read on Medium <ArrowRight className="ml-2 w-4 h-4" />
+                    </a>
                   </Button>
                 </CardFooter>
               </Card>
@@ -219,7 +213,7 @@ const Articles = () => {
             Join our community to receive new articles, research insights, and creative writing directly in your inbox.
           </p>
           <Button asChild variant="secondary" size="lg" className="mt-4">
-            <Link to="/join">Subscribe Now</Link>
+            <a href="https://medium.com/@devesh8423" target="_blank" rel="noopener noreferrer">Subscribe Now</a>
           </Button>
         </motion.div>
       </SectionLayout>
